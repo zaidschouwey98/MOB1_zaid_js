@@ -4,31 +4,29 @@ import UserProvider from "../services/user";
 import Navbar from '../components/navbar';
 import LoginScreen from '../screens/loginScreen';
 import { UserContext } from "../context/userContext";
+import { createStackNavigator } from "@react-navigation/stack";
+import StackNavigator from './stacknavigator';
+import BottomTabNavigator from './BottomTabNavigator';
+const Stack = createStackNavigator();
 class Router extends Component{
     constructor(props) {
         super(props)
         this.state = {
             homePage : undefined,
-            token:undefined
+            isLogged:undefined
         }
         this.user = new UserProvider()
-        this.user.getToken().then((res)=>{
-            if(res){
-                this.setState({homePage:<Navbar></Navbar>})
-                console.log("Token la")        
-            } else {
-                this.setState({homePage:<LoginScreen></LoginScreen>})
-                console.log("pas de token")
-            }
-        }) 
     }
     clearToken(){
         this.user.logOut()
     }
     render(){
         return(
-            <UserContext.Provider value={
+                <UserContext.Provider value={
                 {
+                    logIn: ()=>{
+                        this.setState({isLogged: true})
+                    },
                     setPage: (value)=>{
                         this.setState({
                             homePage: value
@@ -43,8 +41,7 @@ class Router extends Component{
                 }
             }>
                 <NavigationContainer>
-                    
-                    {this.state.homePage}
+                    <BottomTabNavigator/>
                 </NavigationContainer>
             </UserContext.Provider>
         )

@@ -26,7 +26,7 @@ class Login extends Component{
         console.log("Login...")
         this.user.logInApi(initials,password).then((value)=>
         {
-            this.context.setPage(<Navbar></Navbar>)
+            this.context.logIn()
         }).catch((value)=>{
             alert("Login failed")
         })

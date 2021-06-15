@@ -1,12 +1,14 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button, Dimensions } from 'react-native';
+import { TouchableOpacity, Text, View, Button, Dimensions } from 'react-native';
 import Provider from "../services/data";
-
+import {UserContext} from '../context/userContext';
+import Report from "./report";
 class Consultation extends Component{
+    static contextType = UserContext
     state = {
-                gardeReports:[],
-                stupReports:[]
-            }
+        gardeReports:[],
+        stupReports:[]
+    }
     
     constructor(props) {
         super(props)
@@ -22,7 +24,14 @@ class Consultation extends Component{
             (result) => {
                 const dataReportsGarde = result["shift"].map((item)=> 
                     <View style={{marginBottom: 20}}>
+                        <TouchableOpacity
+                            onPress={() => {
+                                this.context.setPage(<Report></Report>)
+                            }}
+                        >
                         <Text>Pour le {item.date} à {item.base}</Text>
+                    </TouchableOpacity>
+                        
                     </View>
                 )
                 
