@@ -4,6 +4,7 @@ import ReportScreen from '../screens/reportScreen';
 import ConsultationScreen from '../screens/consultationScreen';
 import LogOutScreen from '../screens/logoutScreen';
 import ConsultationStackNavigator  from "./consultationstacknavigator";
+import ReportStackNavigator  from "./reportstacknavigator";
 import { createStackNavigator } from "@react-navigation/stack";
 
 const Stack = createStackNavigator();
@@ -25,7 +26,7 @@ class BottomTabNavigator extends Component{
                         <HomeOutlined name="home" color={color} size={size} />
                     ),
                 }}/>
-                <Tab.Screen name="Raporter" component={ReportScreen} options={{
+                <Tab.Screen name="Raporter" component={ReportStackNavigator} options={{
                     tabBarIcon: ({ color, size }) => (
                         <SolutionOutlined name="home" color={color} size={size} />
                     ),

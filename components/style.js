@@ -10,17 +10,26 @@ const styles = StyleSheet.create({
      
     },
     button: {
-      borderWidth:1,
-      padding:5,
+      
+      flex:1,
       margin:10,
-      borderRadius:6,
+      alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: 'black',
+      
       color:"white",
-      backgroundColor:"blue",
-      fontSize: 30,
+      
+      fontSize: 20,
       fontFamily:"Arial"
     },
     view:{
-      flexDirection:'row'
+      alignItems: 'center',
+      flexDirection:'row',
+      justifyContent:'center'
     }
   });
 export default styles;
