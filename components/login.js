@@ -28,6 +28,7 @@ class Login extends Component{
         {
             this.user.getToken().then(
                 (value)=>{
+                    this.context.baseId = this.state.baseId
                     this.context.logIn(value)
                 }
             )
@@ -63,9 +64,9 @@ class Login extends Component{
                     this.setState({password:entered_password})
                 }
                 />
-                <Picker style={styles.input}>
+                <Picker style={styles.input} onChange={val=>this.setState({baseId:val.target.value})}>
                     {this.state.datas.map((base) => (
-                        <Picker.Item label={base.name} value={base.name}></Picker.Item>
+                        <Picker.Item label={base.name} value={base.id}></Picker.Item>
                     ))}
                 </Picker>
                 <Button
