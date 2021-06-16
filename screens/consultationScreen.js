@@ -18,7 +18,7 @@ class ConsultationScreen extends Component {
         return(
             <View>
                 <View>
-                <Text>Voir mes Rapport de :</Text>
+                <Text style={Style.title}>Voir mes Rapport de :</Text>
                 </View>
                 <View style={Style.view}>
                     

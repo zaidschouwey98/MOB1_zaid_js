@@ -14,12 +14,12 @@ const styles = StyleSheet.create({
       flex:1,
       margin:10,
       alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 4,
-    elevation: 3,
-    backgroundColor: 'black',
+      justifyContent: 'center',
+      paddingVertical: 12,
+      paddingHorizontal: 32,
+      borderRadius: 4,
+      elevation: 3,
+      backgroundColor: 'black',
       
       color:"white",
       
@@ -30,6 +30,11 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       flexDirection:'row',
       justifyContent:'center'
+    },
+    title:{
+      margin:10,
+      fontSize:15,
+      fontWeight: "bold"
     }
   });
 export default styles;
