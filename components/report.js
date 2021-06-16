@@ -4,6 +4,7 @@ import Provider from "../services/data";
 import { Card } from 'react-native-elements';
 import {UserContext} from '../context/userContext';
 import { ScrollView } from "react-native";
+import styles from "./style";
 class Report extends Component{
     static contextType = UserContext
     state={
@@ -31,28 +32,45 @@ class Report extends Component{
                 <ScrollView>
                     {(this.props.sort == "pharma") ? (
                     this.state.pharmaChecks.map((item) => (
-                        <Card>
-                            <Card.Title> {(item.nova) ?  'De '+item.drug+' de la nova '+item.nova : 'Du lot '+item.batch_number+' de '+item.drug}</Card.Title>
+                        <Card key={item.id}>
+                            <Card.Title key={item.id}> {(item.nova) ?  'De '+item.drug+' de la nova '+item.nova : 'Du lot '+item.batch_number+' de '+item.drug}</Card.Title>
+                                <Text style={{ textAlign: 'center'}}>{"pour le "+  item.date}</Text>
                             <Card.Divider/>
-                                <View key={item.id}>
-                                    <Text>{item.date}</Text>
-                                </View>
+                            <View style={{flexDirection:'row',flex:1}}>
+                                <Text>Matin: </Text>
+                                <TextInput
+                                    style={styles.numberInput}
+                                    keyboardType="numeric"
+                                   
+                                />
+                                <Text>Soir: </Text>
+                                <TextInput
+                                    style={styles.numberInput}
+                                    keyboardType="numeric"
+                                />
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        
+                                    }}
+                                    style={styles.smallButton}
+                                    >
+                                    Envoyer
+                                </TouchableOpacity>
+                            </View>
                         </Card>
                     )))
                     : null
                     }
                     {
-                        (this.props.sort == "nova") ? (
-                            this.state.novaChecks.map((item) => (
-                                <Card>
-                                    <Card.Title> {'De '+item.drug+' de la nova '+item.nova}</Card.Title>
+                    (this.props.sort == "nova") ? (
+                        this.state.novaChecks.map((item) => (
+                            <Card key={item.id}>
+                                <Card.Title key={item.id}>  {'De '+item.drug+' de la nova '+item.nova}</Card.Title>
+                                        <Text style={{ textAlign: 'center'}}>{'pour le '+item.date}</Text>
                                     <Card.Divider/>
-                                        <View key={item.id}>
-                                            <Text>{'Pour le '+item.date}</Text>
-                                        </View>
-                                </Card>
-                            )))
-                            : null
+                            </Card>
+                        )))
+                    : null
                     }
                 </ScrollView>
         

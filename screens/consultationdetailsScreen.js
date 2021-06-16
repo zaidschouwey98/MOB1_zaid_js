@@ -28,7 +28,7 @@ class ConsultationDetailsScreen extends Component {
     }
     render() {
         return (
-            <ScrollView>
+            <View>
                 <View>
                     <Text style={Style.title}>Dans le rapport du {this.props.route.params.report.date} à {this.props.route.params.report.base}</Text>
                 </View>
@@ -50,7 +50,7 @@ class ConsultationDetailsScreen extends Component {
                     ) : null
                     }
                 </View>
-            </ScrollView>
+            </View>
         );
     }
 }

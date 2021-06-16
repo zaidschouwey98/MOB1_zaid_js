@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { TouchableOpacity } from "react-native";
 import { View } from 'react-native';
 import { Text } from "react-native-elements";
+import { ScrollView } from "react-native-gesture-handler";
 import Report from "../components/report";
 import Style from "../components/style";
 
@@ -12,7 +13,7 @@ class ReportScreen extends Component{
     }
     render(){
         return(
-            <View>
+            <ScrollView>
                 <Text>Faire un </Text>
                 <View style={Style.view}>
                     
@@ -38,7 +39,7 @@ class ReportScreen extends Component{
                 <View>
                     <Report sort={this.state.sort}></Report>
                 </View>
-            </View>
+            </ScrollView>
         );
     }
 }

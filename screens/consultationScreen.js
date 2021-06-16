@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Button, Dimensions } from 'react-native';
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import Consultation from "../components/consultation";
 import Style from "../components/style";
 class ConsultationScreen extends Component {
@@ -8,15 +8,12 @@ class ConsultationScreen extends Component {
     constructor(props) {
         super(props)
     }
-    test(value){
-        console.log(value+"ASSFSFAFSA")
-    }
     navigateToDetails(){
         this.props.navigation.push("ConsultationDetails")
     }
     render(){
         return(
-            <View>
+            <ScrollView>
                 <View>
                 <Text style={Style.title}>Voir mes Rapport de :</Text>
                 </View>
@@ -44,7 +41,7 @@ class ConsultationScreen extends Component {
                 <View>
                     <Consultation nav={this.props.navigation} sort={this.state.sort}></Consultation>
                 </View>
-            </View>
+            </ScrollView>
             
         )
     }
