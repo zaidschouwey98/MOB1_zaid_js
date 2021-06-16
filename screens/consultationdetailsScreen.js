@@ -4,6 +4,7 @@ import Provider from "../services/data";
 import { ListItem, Avatar } from 'react-native-elements';
 import ThemedListItem from "react-native-elements/dist/list/ListItem";
 import { ScrollView } from "react-native";
+import Icon, { HomeOutlined } from "@ant-design/icons";
 
 
 class ConsultationDetailsScreen extends Component {
@@ -36,7 +37,12 @@ class ConsultationDetailsScreen extends Component {
                             <ListItem>
                                 <ListItem.Content>
                                     <ListItem.Title>{item.action}</ListItem.Title>
-                                    <ListItem.Subtitle>{item.at}</ListItem.Subtitle>
+                                    
+                                   {(item.day==1)? (
+                                    <ListItem.Subtitle>Jour : {item.at}</ListItem.Subtitle>
+                                   ) : 
+                                   <ListItem.Subtitle>Nuit : {item.at}</ListItem.Subtitle>
+                                   }
                                 </ListItem.Content>
                             </ListItem>
                         ))
