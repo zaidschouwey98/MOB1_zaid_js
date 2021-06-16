@@ -25,8 +25,8 @@ class Provider {
       }
     }).then((response) => response.json())
   }
-  async getMissingChecks(baseid){
-    return fetch(url + "missingchecks/"+baseid, {
+  async getMissingChecks(){
+    return fetch(url + "missingchecks/"+localStorage.getItem("baseId"), {
       method: "GET",
       headers: {
         'Authorization': 'Bearer ' + await AsyncStorage.getItem("token")

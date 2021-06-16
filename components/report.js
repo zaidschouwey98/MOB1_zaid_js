@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { SafeAreaView, FlatList, TextInput, Text, View, Button, Dimensions } from 'react-native';
+import { SafeAreaView, FlatList, TextInput, Text, View, Button, Dimensions, TouchableOpacity } from 'react-native';
 import Provider from "../services/data";
+import { Card } from 'react-native-elements';
 import {UserContext} from '../context/userContext';
+import { ScrollView } from "react-native";
 class Report extends Component{
     static contextType = UserContext
     state={
@@ -13,19 +15,47 @@ class Report extends Component{
         super(props)
     }
     componentDidMount(){
-        console.log(this.context.base)
         this.getMissingChecks()
     }
+
     getMissingChecks(){
         this.provider.getMissingChecks(this.context.base).then(
             (result)=>{
-                console.log("ssasd" + result)
+                this.setState({pharmaChecks:result.pharma})
+                const dataNova = result["nova"].map((item)=>{
+                    <View style={{marginBottom: 20}}>
+                        <TouchableOpacity
+                            onPress={() => {
+                               
+                            }}
+                        >
+                        <Text></Text>
+                    </TouchableOpacity>
+                        
+                    </View>
+                })
+                this.setState({novaChecks:dataNova})
             }
         )
     }
     render(){
         return(
-            <View></View>
+                <ScrollView>
+                    {(this.props.sort == "pharma") ? (
+                    this.state.pharmaChecks.map((item) => (
+                        <Card>
+                            <Card.Title> {(item.nova) ?  'De '+item.drug+' de la nova '+item.nova : 'Du lot '+item.batch_number+' de '+item.drug}</Card.Title>
+                            <Card.Divider/>
+                                <View key={item.id}>
+                                    <Text>{item.date}</Text>
+                                </View>
+                        </Card>
+                    )))
+                    : null
+                }
+               
+                </ScrollView>
+        
         )
     }
 }

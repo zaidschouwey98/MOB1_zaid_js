@@ -18,17 +18,19 @@ class Login extends Component{
         this.state = {
             datas: [],
             initials: String,
-            password: String
+            password: String,
+            baseid:undefined
         };
         
     }
     login(initials,password){
         console.log("Login...")
+        console.log(this.state.baseid)
         this.user.logInApi(initials,password,this.state.baseid).then((value)=>
         {
             this.user.getToken().then(
                 (value)=>{
-                    this.context.logIn(value,this.state.base)
+                    this.context.logIn(value)
                 }
             )
             this.context.logIn()
@@ -65,7 +67,7 @@ class Login extends Component{
                 />
                 <Picker style={styles.input} onChange={val=>this.setState({baseid:val.target.value})}>
                     {this.state.datas.map((base) => (
-                        <Picker.Item label={base.name} value={base.id}></Picker.Item>
+                        <Picker.Item key={base.name} label={base.name} value={base.id}></Picker.Item>
                     ))}
                 </Picker>
                 <Button

@@ -43,8 +43,8 @@ class Router extends Component{
         return(
                 <UserContext.Provider value={
                 {
-                    logIn: (value,base)=>{
-                        this.setState({token: value,base:base})
+                    logIn: (value)=>{
+                        this.setState({token: value})
 
                     },
                     setPage: (value)=>{
