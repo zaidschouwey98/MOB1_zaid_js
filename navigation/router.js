@@ -31,7 +31,6 @@ class Router extends Component{
         }
     }
     componentDidMount(){
-        console.log("AAASFJAJKFSAFJJSA")
         this.user.getToken().then((value)=>{
             if(value){
                 this.setState({

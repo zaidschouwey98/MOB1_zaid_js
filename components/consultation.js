@@ -25,7 +25,10 @@ class Consultation extends Component{
                     <View style={{marginBottom: 20}}>
                         <TouchableOpacity
                             onPress={() => {
-                                this.props.nav.navigate("ConsultationDetails" );
+                                this.props.nav.navigate({
+                                    name: "ConsultationDetails",
+                                    params:{report:item},
+                                });
                             }}
                         >
                         <Text>Pour le {item.date} à {item.base}</Text>
