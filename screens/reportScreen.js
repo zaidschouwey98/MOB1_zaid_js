@@ -6,15 +6,20 @@ import Report from "../components/report";
 import Style from "../components/style";
 
 class ReportScreen extends Component{
+    state={sort:undefined}
+    constructor(props){
+        super(props)
+    }
     render(){
         return(
             <View>
+                <Text>Faire un </Text>
                 <View style={Style.view}>
                     
                     
                     <TouchableOpacity
                     onPress={() => {
-                        this.setState({sort: "garde"})
+                        this.setState({sort: "pharma"})
                     }}
                     style={Style.button}
                     >
@@ -22,7 +27,7 @@ class ReportScreen extends Component{
                     </TouchableOpacity>
                     <TouchableOpacity
                     onPress={() => {
-                        this.setState({sort: "stup"})
+                        this.setState({sort: "nova"})
                     }}
                     style={Style.button}
                     >

@@ -25,6 +25,14 @@ class Provider {
       }
     }).then((response) => response.json())
   }
+  async getMissingChecks(baseid){
+    return fetch(url + "missingchecks/"+baseid, {
+      method: "GET",
+      headers: {
+        'Authorization': 'Bearer ' + await AsyncStorage.getItem("token")
+      }
+    }).then((response) => response.json())
+  }
 }
 export default Provider;
 
