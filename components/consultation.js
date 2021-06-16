@@ -3,6 +3,8 @@ import { TouchableOpacity, Text, View, Button, Dimensions } from 'react-native';
 import Provider from "../services/data";
 import {UserContext} from '../context/userContext';
 import Report from "./report";
+import { Card } from "react-native-elements";
+import { ScrollView } from "react-native-gesture-handler";
 class Consultation extends Component{
     static contextType = UserContext
     state = {
@@ -22,19 +24,26 @@ class Consultation extends Component{
         this.provider.getReportsFromApi().then(
             (result) => {
                 const dataReportsGarde = result["shift"].map((item)=> 
-                    <View style={{marginBottom: 20}}>
-                        <TouchableOpacity
-                            onPress={() => {
-                                this.props.nav.navigate({
-                                    name: "ConsultationDetails",
-                                    params:{report:item},
-                                });
-                            }}
-                        >
-                        <Text>Pour le {item.date} à {item.base}</Text>
-                    </TouchableOpacity>
+                    <ScrollView style={{marginBottom: 20}}>
                         
-                    </View>
+                            
+                            <TouchableOpacity
+                                onPress={() => {
+                                    this.props.nav.navigate({
+                                        name: "ConsultationDetails",
+                                        params:{report:item},
+                                    });
+                                }}
+                            >
+                                <Card>
+                                    <Card.Title>
+                                        <Text>Pour le {item.date} à {item.base}</Text>
+                                    </Card.Title>
+                                </Card>
+                            </TouchableOpacity>
+                            
+                        
+                    </ScrollView>
                 )
                 
                 const dataReportsStup = result["drug"].map((item)=>
