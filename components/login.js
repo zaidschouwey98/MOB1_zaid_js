@@ -6,7 +6,8 @@ import DataProvider from "../services/data";
 import {Picker} from '@react-native-community/picker';
 import { NavigationContainer } from '@react-navigation/native';
 import {UserContext} from '../context/userContext';
-import Navbar from "./navbar";
+import Style from '../components/style';
+import { TouchableOpacity } from "react-native";
 class Login extends Component{
 
     static contextType = UserContext
@@ -70,13 +71,15 @@ class Login extends Component{
                         <Picker.Item key={base.name} label={base.name} value={base.id}></Picker.Item>
                     ))}
                 </Picker>
-                <Button
-                onPress={() => {
-                    this.login(this.state.initials,this.state.password)
-                }}
-                title="Login"
-                color="#841584"
-                />
+                <TouchableOpacity
+                    onPress={() => {
+                        this.login(this.state.initials,this.state.password)
+                    }}
+                    style={Style.button}
+                    >
+                        Se connecter
+                </TouchableOpacity>
+                
             </View>
         );
     }

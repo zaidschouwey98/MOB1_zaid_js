@@ -5,6 +5,7 @@ import { ListItem, Avatar } from 'react-native-elements';
 import ThemedListItem from "react-native-elements/dist/list/ListItem";
 import { ScrollView } from "react-native";
 import Icon, { HomeOutlined } from "@ant-design/icons";
+import Style from "../components/style";
 
 
 class ConsultationDetailsScreen extends Component {
@@ -29,7 +30,7 @@ class ConsultationDetailsScreen extends Component {
         return (
             <ScrollView>
                 <View>
-                    <Text>Dans le rapport du {this.props.route.params.report.date} à {this.props.route.params.report.base}</Text>
+                    <Text style={Style.title}>Dans le rapport du {this.props.route.params.report.date} à {this.props.route.params.report.base}</Text>
                 </View>
                 <View>
                     {(this.state.actionsInShift) ? (
