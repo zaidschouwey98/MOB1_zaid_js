@@ -18,7 +18,7 @@ class Provider {
     }).then((response) => response.json())
   }
   async getMyActionsInShift(id){
-    return fetch(url + "myactionsinshift"+id, {
+    return fetch(url + "myactionsinshift/"+id, {
       method: "GET",
       headers: {
         'Authorization': 'Bearer ' + await AsyncStorage.getItem("token")
