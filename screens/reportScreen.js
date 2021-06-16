@@ -23,7 +23,7 @@ class ReportScreen extends Component{
                     }}
                     style={Style.button}
                     >
-                        PharmaCheck
+                        <Text style={{color:"white"}}>PharmaChecks</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                     onPress={() => {
@@ -31,11 +31,13 @@ class ReportScreen extends Component{
                     }}
                     style={Style.button}
                     >
-                        NovaCheck
+                        <Text style={{color:"white"}}>NovaCheck</Text>
                     </TouchableOpacity>
                 
                 </View>
-                <Report></Report>
+                <View>
+                    <Report sort={this.state.sort}></Report>
+                </View>
             </View>
         );
     }

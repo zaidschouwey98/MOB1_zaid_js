@@ -43,8 +43,9 @@ class Router extends Component{
         return(
                 <UserContext.Provider value={
                 {
-                    logIn: (value)=>{
-                        this.setState({token: value})
+                    logIn: (value,base)=>{
+                        this.setState({token: value,base:base})
+
                     },
                     setPage: (value)=>{
                         this.setState({
@@ -56,7 +57,9 @@ class Router extends Component{
                         this.setState({
                             token:""
                         })
-                    }
+                    },
+                    base: this.state.base
+                    
                 }
             }>
                 <NavigationContainer>
