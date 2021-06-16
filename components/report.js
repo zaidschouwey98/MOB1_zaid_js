@@ -22,19 +22,7 @@ class Report extends Component{
         this.provider.getMissingChecks(this.context.base).then(
             (result)=>{
                 this.setState({pharmaChecks:result.pharma})
-                const dataNova = result["nova"].map((item)=>{
-                    <View style={{marginBottom: 20}}>
-                        <TouchableOpacity
-                            onPress={() => {
-                               
-                            }}
-                        >
-                        <Text></Text>
-                    </TouchableOpacity>
-                        
-                    </View>
-                })
-                this.setState({novaChecks:dataNova})
+                this.setState({novaChecks:result.nova})
             }
         )
     }
@@ -52,8 +40,20 @@ class Report extends Component{
                         </Card>
                     )))
                     : null
-                }
-               
+                    }
+                    {
+                        (this.props.sort == "nova") ? (
+                            this.state.novaChecks.map((item) => (
+                                <Card>
+                                    <Card.Title> {'De '+item.drug+' de la nova '+item.nova}</Card.Title>
+                                    <Card.Divider/>
+                                        <View key={item.id}>
+                                            <Text>{'Pour le '+item.date}</Text>
+                                        </View>
+                                </Card>
+                            )))
+                            : null
+                    }
                 </ScrollView>
         
         )
