@@ -26,6 +26,11 @@ class Login extends Component{
         console.log("Login...")
         this.user.logInApi(initials,password).then((value)=>
         {
+            this.user.getToken().then(
+                (value)=>{
+                    this.context.logIn(value)
+                }
+            )
             this.context.logIn()
         }).catch((value)=>{
             alert("Login failed")

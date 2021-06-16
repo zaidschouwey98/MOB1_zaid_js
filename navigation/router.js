@@ -5,13 +5,16 @@ import Navbar from '../components/navbar';
 import LoginScreen from '../screens/loginScreen';
 import { UserContext } from "../context/userContext";
 import { createStackNavigator } from "@react-navigation/stack";
-import StackNavigator from './stacknavigator';
+
 import BottomTabNavigator from './BottomTabNavigator';
+
+import LoginStackNavigator from './loginstacknavigator';
 const Stack = createStackNavigator();
 class Router extends Component{
     constructor(props) {
         super(props)
         this.state = {
+            token:undefined,
             homePage : undefined,
             isLogged:undefined
         }
@@ -20,12 +23,29 @@ class Router extends Component{
     clearToken(){
         this.user.logOut()
     }
+    renderElement(){
+        if(this.state.token){
+            return <BottomTabNavigator></BottomTabNavigator>
+        } else {
+            return <LoginStackNavigator></LoginStackNavigator>
+        }
+    }
+    componentDidMount(){
+        console.log("AAASFJAJKFSAFJJSA")
+        this.user.getToken().then((value)=>{
+            if(value){
+                this.setState({
+                    token:value
+                })
+            }
+        })
+    }
     render(){
         return(
                 <UserContext.Provider value={
                 {
-                    logIn: ()=>{
-                        this.setState({isLogged: true})
+                    logIn: (value)=>{
+                        this.setState({token: value})
                     },
                     setPage: (value)=>{
                         this.setState({
@@ -35,13 +55,13 @@ class Router extends Component{
                     logOut: ()=> {
                         this.clearToken()
                         this.setState({
-                            homePage: <LoginScreen></LoginScreen>
+                            token:""
                         })
                     }
                 }
             }>
                 <NavigationContainer>
-                    <BottomTabNavigator/>
+                    {this.renderElement()}
                 </NavigationContainer>
             </UserContext.Provider>
         )

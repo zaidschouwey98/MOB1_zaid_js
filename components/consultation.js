@@ -17,7 +17,6 @@ class Consultation extends Component{
     }
     componentDidMount(){
         this.getReports()
-        
     }
     getReports(){
         this.provider.getReportsFromApi().then(
@@ -26,7 +25,7 @@ class Consultation extends Component{
                     <View style={{marginBottom: 20}}>
                         <TouchableOpacity
                             onPress={() => {
-                                this.context.setPage(<Report></Report>)
+                                this.props.nav.navigate("ConsultationDetails" );
                             }}
                         >
                         <Text>Pour le {item.date} à {item.base}</Text>

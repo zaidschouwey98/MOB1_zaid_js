@@ -3,8 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const url = "http://127.0.0.1:8000/api/"
 
 class User {
-    token
-     async saveToken(token){
+    async saveToken(token){
     console.log("Entrée dans fonction savetoken")
         try {
           console.log("Sa save le token")

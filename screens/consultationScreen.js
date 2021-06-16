@@ -7,7 +7,12 @@ class ConsultationScreen extends Component {
     state={sort:undefined}
     constructor(props) {
         super(props)
-    
+    }
+    test(value){
+        console.log(value+"ASSFSFAFSA")
+    }
+    navigateToDetails(){
+        this.props.navigation.push("ConsultationDetails")
     }
     render(){
         return(
@@ -37,7 +42,7 @@ class ConsultationScreen extends Component {
                 
                 </View>
                 <View>
-                    <Consultation sort={this.state.sort}></Consultation>
+                    <Consultation nav={this.props.navigation} sort={this.state.sort}></Consultation>
                 </View>
             </View>
             
