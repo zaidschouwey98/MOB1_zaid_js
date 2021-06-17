@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { TextInput, Text, View, TouchableOpacity } from 'react-native';
 import Provider from "../services/data";
 import { Card } from 'react-native-elements';
-import { UserContext } from '../context/userContext';
-import { ScrollView } from "react-native";
+
 import styles from "./style";
 import moment from "moment";
 class ReportCard extends Component {
@@ -11,12 +10,13 @@ class ReportCard extends Component {
         start:undefined,
         end:undefined
     }
+    provider = new Provider()
     constructor(props) {
         super(props)
     }
 
     reportPharmaValue(){
-        console.log(this.state)
+        this.provider.postPharmaValue(this.state.batch_id,this.state.drugsheet_id,this.state.start,this.state.end,this.state.date).then((res)=>console.log(res))
     }
 
     componentDidMount(){
@@ -25,6 +25,7 @@ class ReportCard extends Component {
             drugsheet_id:this.props.item.drugsheet_id,
             date:this.props.item.date
         })
+        console.log(this.props.item)
     }
 
     render() {
@@ -42,6 +43,7 @@ class ReportCard extends Component {
                             this.setState({start:val})
                         }
                         }
+                        defaultValue={this.props.item.start}
                     />
                     <Text>Soir: </Text>
                     <TextInput
@@ -51,7 +53,7 @@ class ReportCard extends Component {
                             this.setState({end:val})
                         }
                         }
-
+                        defaultValue={this.props.item.end}
 
                     />
                     <TouchableOpacity

@@ -34,16 +34,19 @@ class Provider {
     }).then((response) => response.json())
   }
   async postPharmaValue(batch_id,drugsheet_id,start,end,date){
-    const response = await fetch(url + "pharmacheck", {
+    return fetch(url + "pharmacheck", {
       method: 'POST',
       headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + await AsyncStorage.getItem("token")
       },
       body: JSON.stringify({
         batch_id: batch_id,
         drugsheet_id: drugsheet_id,
         start:start,
-        end: end
+        end: end,
+        date:date
       })
     })
   }
