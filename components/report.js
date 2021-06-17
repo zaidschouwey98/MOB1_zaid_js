@@ -35,18 +35,16 @@ class Report extends Component {
             <ScrollView>
                 {(this.props.sort == "pharma") ? (
                     this.state.pharmaChecks.map((item) => (
-                        <ReportCard item={item}></ReportCard>
+                        <ReportCard sort={this.props.sort} item={item}></ReportCard>
                     )))
                     : null
                 }
                 {
                     (this.props.sort == "nova") ? (
                         this.state.novaChecks.map((item) => (
-                            <Card key={item.id}>
-                                <Card.Title key={item.id}>  {'De ' + item.drug + ' de la nova ' + item.nova}</Card.Title>
-                                <Text style={{ textAlign: 'center' }}>{'pour le ' + moment(item.date).format("D MMM")}</Text>
-                                <Card.Divider />
-                            </Card>
+
+                            <ReportCard sort={this.props.sort} item={item}></ReportCard>
+                           
                         )))
                         : null
                 }

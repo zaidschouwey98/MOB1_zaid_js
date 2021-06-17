@@ -16,25 +16,38 @@ class ReportCard extends Component {
     }
 
     reportPharmaValue(){
-        this.provider.postPharmaValue(this.state.batch_id,this.state.drugsheet_id,this.state.start,this.state.end,this.state.date).then((res)=>console.log(res))
+        if(this.props.sort=="pharma")
+            this.provider.postPharmaValue(this.state.id,this.state.drugsheet_id,this.state.start,this.state.end,this.state.date).then((res)=>console.log(res))
+        else
+        {
+            console.log(this.state)
+            this.provider.postNovaValue(this.state.id,this.state.drugsheet_id,this.state.start,this.state.end,this.state.date,this.state.drug_id).then((res)=>console.log(res))
+        }
     }
 
     componentDidMount(){
         this.setState({
-            batch_id:this.props.item.batch_id,
+            id:this.props.item.batch_id ? this.props.item.batch_id : this.props.item.nova_id,
             drugsheet_id:this.props.item.drugsheet_id,
             date:this.props.item.date
         })
-        console.log(this.props.item)
+        if(this.props.item.drug_id)
+            this.setState({drug_id:this.props.item.drug_id})
     }
 
     render() {
         return (
             <Card>
-                <Card.Title>{'Du lot ' + this.props.item.batch_number + ' de ' + this.props.item.drug}</Card.Title>
+                <Card.Title>{(this.props.sort=="pharma") ? 'Du lot ' + this.props.item.batch_number + ' de ' + this.props.item.drug : 'De ' + this.props.item.drug + ' de la nova ' + this.props.item.nova}</Card.Title>
                 <Text style={{ textAlign: 'center' }}>{"pour le " + moment(this.props.item.date).format("D MMM")}</Text>
                 <Card.Divider />
                 <View style={{ flexDirection: 'row', flex: 1 }}>
+                    {console.log(this.props.item.nova_id)}
+                    {console.log(this.props.item.drugsheet_id)}
+                    {console.log(this.props.item.start)}
+                    {console.log(this.props.item.end)}
+                    {console.log(this.props.item.date)}
+                    {console.log(this.props.item.drug_id)}
                     <Text>Matin: </Text>
                     <TextInput
                         style={styles.numberInput}
