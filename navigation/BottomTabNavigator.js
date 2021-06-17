@@ -1,19 +1,12 @@
 import React, { Component } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import ReportScreen from '../screens/reportScreen';
-import ConsultationScreen from '../screens/consultationScreen';
 import LogOutScreen from '../screens/logoutScreen';
 import ConsultationStackNavigator  from "./consultationstacknavigator";
 import ReportStackNavigator  from "./reportstacknavigator";
-import { createStackNavigator } from "@react-navigation/stack";
-
-const Stack = createStackNavigator();
 import {
     LoginOutlined,
     HomeOutlined,
-    
     SolutionOutlined,
-    
   } from '@ant-design/icons';
 
 const Tab = createBottomTabNavigator();

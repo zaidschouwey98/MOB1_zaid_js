@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import { TouchableOpacity, Text, View, Button, Dimensions } from 'react-native';
-
-import LoginScreen from "../screens/loginScreen";
 import ConsultationScreen from "../screens/consultationScreen";
 import { createStackNavigator } from "@react-navigation/stack";
 import ConsultationDetailsScreen from "../screens/consultationdetailsScreen";

@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import { SafeAreaView, FlatList, TextInput, Text, View, Button, Dimensions } from 'react-native';
+import { TextInput, View } from 'react-native';
 import styles from "./style";
 import UserProvider from "../services/user";
 import DataProvider from "../services/data";
 import {Picker} from '@react-native-community/picker';
-import { NavigationContainer } from '@react-navigation/native';
 import {UserContext} from '../context/userContext';
 import Style from '../components/style';
 import { TouchableOpacity } from "react-native";

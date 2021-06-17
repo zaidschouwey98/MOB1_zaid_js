@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { SafeAreaView, FlatList, TextInput, Text, View, Button, Dimensions, TouchableOpacity } from 'react-native';
+import { TextInput, Text, View, TouchableOpacity } from 'react-native';
 import Provider from "../services/data";
 import { Card } from 'react-native-elements';
 import { UserContext } from '../context/userContext';

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { TouchableOpacity, Text, View, Button, Dimensions } from 'react-native';
+import { TouchableOpacity, Text, View } from 'react-native';
 import Provider from "../services/data";
 import {UserContext} from '../context/userContext';
-import Report from "./report";
 import { Card } from "react-native-elements";
 import { ScrollView } from "react-native-gesture-handler";
 import moment from "moment";

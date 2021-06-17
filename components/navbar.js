@@ -1,17 +1,12 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Report from './report'
 import React, { Component } from "react";
-import { NavigationContainer } from '@react-navigation/native';
-import LoginScreen from '../screens/loginScreen';
 import ReportScreen from '../screens/reportScreen';
 import ConsultationScreen from '../screens/consultationScreen';
 import LogOutScreen from '../screens/logoutScreen';
 import {
     LoginOutlined,
     HomeOutlined,
-    
     SolutionOutlined,
-    
   } from '@ant-design/icons';
 const Tab = createBottomTabNavigator();
 class Navbar extends Component{

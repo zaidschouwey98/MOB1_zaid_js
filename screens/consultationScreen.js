@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button, Dimensions } from 'react-native';
+import {  Text, View  } from 'react-native';
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import Consultation from "../components/consultation";
 import Style from "../components/style";
+
 class ConsultationScreen extends Component {
     state={sort:undefined}
     constructor(props) {

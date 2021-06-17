@@ -1,13 +1,9 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button, Dimensions } from 'react-native';
+import {  Text, View } from 'react-native';
 import Provider from "../services/data";
-import { ListItem, Avatar } from 'react-native-elements';
-import ThemedListItem from "react-native-elements/dist/list/ListItem";
-import { ScrollView } from "react-native";
-import Icon, { HomeOutlined } from "@ant-design/icons";
+import { ListItem } from 'react-native-elements';
 import Style from "../components/style";
 import moment from "moment";
-
 
 class ConsultationDetailsScreen extends Component {
     data = new Provider()

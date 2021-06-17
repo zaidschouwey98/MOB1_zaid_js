@@ -1,15 +1,10 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React, { Component } from 'react';
 import UserProvider from "../services/user";
-import Navbar from '../components/navbar';
-import LoginScreen from '../screens/loginScreen';
 import { UserContext } from "../context/userContext";
-import { createStackNavigator } from "@react-navigation/stack";
-
 import BottomTabNavigator from './BottomTabNavigator';
-
 import LoginStackNavigator from './loginstacknavigator';
-const Stack = createStackNavigator();
+
 class Router extends Component{
     constructor(props) {
         super(props)
