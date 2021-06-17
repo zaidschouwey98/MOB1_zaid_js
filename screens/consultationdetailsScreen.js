@@ -6,6 +6,7 @@ import ThemedListItem from "react-native-elements/dist/list/ListItem";
 import { ScrollView } from "react-native";
 import Icon, { HomeOutlined } from "@ant-design/icons";
 import Style from "../components/style";
+import moment from "moment";
 
 
 class ConsultationDetailsScreen extends Component {
@@ -30,7 +31,7 @@ class ConsultationDetailsScreen extends Component {
         return (
             <View>
                 <View>
-                    <Text style={Style.title}>Dans le rapport du {this.props.route.params.report.date} à {this.props.route.params.report.base}</Text>
+                    <Text style={Style.title}>Dans le rapport du {moment(this.props.route.params.report.date).format("DD / MM / YYYY")} à {this.props.route.params.report.base}</Text>
                 </View>
                 <View>
                     {(this.state.actionsInShift) ? (
@@ -40,9 +41,9 @@ class ConsultationDetailsScreen extends Component {
                                     <ListItem.Title>{item.action}</ListItem.Title>
                                     
                                    {(item.day==1)? (
-                                    <ListItem.Subtitle>Jour : {item.at}</ListItem.Subtitle>
+                                    <ListItem.Subtitle>Jour : {moment(item.at).format("DD / MM / YYYY")}</ListItem.Subtitle>
                                    ) : 
-                                   <ListItem.Subtitle>Nuit : {item.at}</ListItem.Subtitle>
+                                   <ListItem.Subtitle>Nuit : {moment(item.at).format("DD / MM / YYYY")}</ListItem.Subtitle>
                                    }
                                 </ListItem.Content>
                             </ListItem>

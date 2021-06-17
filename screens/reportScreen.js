@@ -14,7 +14,7 @@ class ReportScreen extends Component{
     render(){
         return(
             <ScrollView>
-                <Text>Faire un </Text>
+                <Text style={Style.title}>Faire un </Text>
                 <View style={Style.view}>
                     
                     

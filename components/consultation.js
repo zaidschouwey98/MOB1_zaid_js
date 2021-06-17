@@ -5,6 +5,7 @@ import {UserContext} from '../context/userContext';
 import Report from "./report";
 import { Card } from "react-native-elements";
 import { ScrollView } from "react-native-gesture-handler";
+import moment from "moment";
 class Consultation extends Component{
     static contextType = UserContext
     state = {
@@ -37,7 +38,7 @@ class Consultation extends Component{
                             >
                                 <Card>
                                     <Card.Title>
-                                        <Text>Pour le {item.date} à {item.base}</Text>
+                                        <Text>Pour le {moment(item.date).format("DD / MM / YYYY")} à {item.base}</Text>
                                     </Card.Title>
                                 </Card>
                             </TouchableOpacity>
