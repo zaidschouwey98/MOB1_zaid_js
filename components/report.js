@@ -6,11 +6,13 @@ import { UserContext } from '../context/userContext';
 import { ScrollView } from "react-native";
 import styles from "./style";
 import moment from "moment";
+import ReportCard from "./reportcard";
 class Report extends Component {
     static contextType = UserContext
     state = {
         pharmaChecks: [],
-        novaChecks: []
+        novaChecks: [],
+        array:[]
     }
     provider = new Provider()
     constructor(props) {
@@ -33,55 +35,7 @@ class Report extends Component {
             <ScrollView>
                 {(this.props.sort == "pharma") ? (
                     this.state.pharmaChecks.map((item) => (
-                        <Card key={item.id}>
-                            <Card.Title key={item.id}> {(item.nova) ? 'De ' + item.drug + ' de la nova ' + item.nova : 'Du lot ' + item.batch_number + ' de ' + item.drug}</Card.Title>
-                            <Text style={{ textAlign: 'center' }}>{"pour le "  + moment(item.date).format("D MMM") }</Text>
-                            <Card.Divider />
-                            <View style={{ flexDirection: 'row', flex: 1 }}>
-                                <Text>Matin: </Text>
-                                <TextInput
-                                    style={styles.numberInput}
-                                    keyboardType="numeric"
-                                    defaultValue={item.start}
-                                    onChangeText={(test) => {
-
-                                        this.setState({
-                                            array: [item.id,
-                                            [test]
-                                            ]
-                                        })
-
-
-                                    }
-                                    }
-                                />
-                                <Text>Soir: </Text>
-                                <TextInput
-                                    style={styles.numberInput}
-                                    keyboardType="numeric"
-                                    defaultValue={item.end}
-                                    onChangeText={(test) => {
-
-                                        this.setState({
-                                            array: [item.id,
-                                            []
-                                            ]
-                                        })
-
-
-                                    }
-                                    }
-                                />
-                                <TouchableOpacity
-                                    onPress={() => {
-                                        console.log(item.id)
-                                    }}
-                                    style={styles.smallButton}
-                                >
-                                    Envoyer
-                                </TouchableOpacity>
-                            </View>
-                        </Card>
+                        <ReportCard item={item}></ReportCard>
                     )))
                     : null
                 }
