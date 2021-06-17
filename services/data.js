@@ -33,6 +33,20 @@ class Provider {
       }
     }).then((response) => response.json())
   }
+  async postPharmaValue(batch_id,drugsheet_id,start,end,date){
+    const response = await fetch(url + "pharmacheck", {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + await AsyncStorage.getItem("token")
+      },
+      body: JSON.stringify({
+        batch_id: batch_id,
+        drugsheet_id: drugsheet_id,
+        start:start,
+        end: end
+      })
+    })
+  }
 }
 export default Provider;
 

@@ -7,12 +7,24 @@ import { ScrollView } from "react-native";
 import styles from "./style";
 import moment from "moment";
 class ReportCard extends Component {
+    state={
+        start:undefined,
+        end:undefined
+    }
     constructor(props) {
         super(props)
     }
 
     reportPharmaValue(){
-        
+        console.log(this.state)
+    }
+
+    componentDidMount(){
+        this.setState({
+            batch_id:this.props.item.batch_id,
+            drugsheet_id:this.props.item.drugsheet_id,
+            date:this.props.item.date
+        })
     }
 
     render() {
@@ -26,10 +38,8 @@ class ReportCard extends Component {
                     <TextInput
                         style={styles.numberInput}
                         keyboardType="numeric"
-
-                        onChangeText={(test) => {
-                            console.log()
-
+                        onChangeText={(val) => {
+                            this.setState({start:val})
                         }
                         }
                     />
@@ -37,13 +47,16 @@ class ReportCard extends Component {
                     <TextInput
                         style={styles.numberInput}
                         keyboardType="numeric"
-
+                        onChangeText={(val) => {
+                            this.setState({end:val})
+                        }
+                        }
 
 
                     />
                     <TouchableOpacity
                         onPress={() => {
-                            console.log(this.state.array)
+                            this.reportPharmaValue()
                         }}
                         style={styles.smallButton}
                     >
