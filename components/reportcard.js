@@ -5,7 +5,6 @@ import { Card } from "react-native-elements";
 import Toast from "react-native-toast-message";
 import styles from "./style";
 import moment from "moment";
-import NumericInput from "react-native-numeric-input";
 
 class ReportCard extends Component {
   state = {
