@@ -46,13 +46,18 @@ class Report extends Component {
             ))
           : null}
         {this.props.sort == "nova"
-          ? this.state.novaChecks.map((item) => (
-              <ReportCard
-                shouldRender={this.getMissingChecks}
-                sort={this.props.sort}
-                item={item}
-              ></ReportCard>
-            ))
+          ? this.state.novaChecks.map(
+              (item) => (
+                console.log(item),
+                (
+                  <ReportCard
+                    shouldRender={this.getMissingChecks}
+                    sort={this.props.sort}
+                    item={item}
+                  ></ReportCard>
+                )
+              )
+            )
           : null}
       </ScrollView>
     );

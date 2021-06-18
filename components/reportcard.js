@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { TextInput, Text, View, TouchableOpacity } from "react-native";
 import Provider from "../services/data";
 import { Card } from "react-native-elements";
-
+import Toast from "react-native-toast-message";
 import styles from "./style";
 import moment from "moment";
+
 class ReportCard extends Component {
   state = {
     start: undefined,
@@ -26,7 +27,27 @@ class ReportCard extends Component {
           this.state.date
         )
         .then((res) => {
+          Toast.show(
+            res.status == 200
+              ? {
+                  type: "success",
+                  text1: "Succès:",
+                  text2: "Les informations ont été sauvegardées.",
+                }
+              : {
+                  type: "error",
+                  text1: "Erreur:",
+                  text2: "Vérifiez les champs.",
+                }
+          );
           this.props.shouldRender();
+        })
+        .catch((res) => {
+          Toast.show({
+            type: "error",
+            text1: "Erreur:",
+            text2: "Vérifiez les champs.",
+          });
         });
     else {
       this.provider
@@ -39,7 +60,27 @@ class ReportCard extends Component {
           this.state.drug_id
         )
         .then((res) => {
+          Toast.show(
+            res.status == 200
+              ? {
+                  type: "success",
+                  text1: "Succès:",
+                  text2: "Les informations ont été sauvegardées.",
+                }
+              : {
+                  type: "error",
+                  text1: "Erreur:",
+                  text2: "Vérifiez les champs.",
+                }
+          );
           this.props.shouldRender();
+        })
+        .catch((res) => {
+          Toast.show({
+            type: "error",
+            text1: "Erreur:",
+            text2: "Vérifiez les champs.",
+          });
         });
     }
   }

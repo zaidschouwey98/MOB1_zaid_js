@@ -51,16 +51,6 @@ class Provider {
     });
   }
   async postNovaValue(nova_id, drugsheet_id, start, end, date, drug_id) {
-    console.log(
-      JSON.stringify({
-        nova_id: nova_id,
-        drugsheet_id: drugsheet_id,
-        start: start,
-        end: end,
-        date: date,
-        drug_id: drug_id,
-      })
-    );
     return fetch(url + "novacheck", {
       method: "POST",
       headers: {
