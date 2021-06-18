@@ -25,7 +25,7 @@ class ConsultationScreen extends Component {
             }}
             style={Style.button}
           >
-            Garde
+            <Text style={Style.buttonText}>Garde</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
@@ -33,7 +33,7 @@ class ConsultationScreen extends Component {
             }}
             style={Style.button}
           >
-            Drogues
+            <Text style={Style.buttonText}>Drogues</Text>
           </TouchableOpacity>
         </View>
         <View>

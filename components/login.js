@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { TextInput, View } from "react-native";
+import { Text, TextInput, View } from "react-native";
 import styles from "./style";
 import UserProvider from "../services/user";
 import DataProvider from "../services/data";
@@ -82,7 +82,7 @@ class Login extends Component {
           }}
           style={Style.button}
         >
-          Se connecter
+          <Text style={Style.buttonText}>Se connecter</Text>
         </TouchableOpacity>
       </View>
     );

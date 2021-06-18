@@ -141,7 +141,7 @@ class ReportCard extends Component {
             }}
             style={styles.smallButton}
           >
-            Envoyer
+            <Text style={styles.smallButtonText}>Envoyer</Text>
           </TouchableOpacity>
         </View>
       </Card>

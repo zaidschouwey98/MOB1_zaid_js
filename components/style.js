@@ -26,9 +26,9 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     elevation: 3,
     backgroundColor: "black",
-
+  },
+  buttonText: {
     color: "white",
-
     fontSize: 20,
     fontFamily: "Arial",
   },
@@ -42,6 +42,8 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     elevation: 3,
     backgroundColor: "black",
+  },
+  smallButtonText: {
     color: "white",
     fontSize: 10,
     fontFamily: "Arial",
