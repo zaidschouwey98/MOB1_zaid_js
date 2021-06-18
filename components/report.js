@@ -25,6 +25,7 @@ class Report extends Component {
 
   getMissingChecks() {
     this.provider.getMissingChecks(this.context.base).then((result) => {
+      console.log("Missing checks : ", result);
       this.setState({
         pharmaChecks: result.pharma,
         novaChecks: result.nova,
@@ -32,6 +33,7 @@ class Report extends Component {
     });
   }
   render() {
+    console.log("Render Report", this.state.novaChecks);
     return (
       <ScrollView>
         {this.props.sort == "pharma"

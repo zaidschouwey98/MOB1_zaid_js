@@ -4,7 +4,7 @@ import UserProvider from "../services/user";
 import { UserContext } from "../context/userContext";
 import BottomTabNavigator from "./BottomTabNavigator";
 import LoginStackNavigator from "./loginstacknavigator";
-
+import Toast from "react-native-toast-message";
 class Router extends Component {
   constructor(props) {
     super(props);
@@ -55,7 +55,10 @@ class Router extends Component {
           base: this.state.base,
         }}
       >
-        <NavigationContainer>{this.renderElement()}</NavigationContainer>
+        <NavigationContainer>
+          {this.renderElement()}
+          <Toast ref={(ref) => Toast.setRef(ref)} />
+        </NavigationContainer>
       </UserContext.Provider>
     );
   }

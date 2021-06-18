@@ -7,6 +7,7 @@ import { Picker } from "@react-native-community/picker";
 import { UserContext } from "../context/userContext";
 import Style from "../components/style";
 import { TouchableOpacity } from "react-native";
+import Toast from "react-native-toast-message";
 class Login extends Component {
   static contextType = UserContext;
 
@@ -33,7 +34,11 @@ class Login extends Component {
         this.context.logIn();
       })
       .catch((value) => {
-        alert("Login failed");
+        Toast.show({
+          type: "error",
+          text1: "Erreur:",
+          text2: "La connection a échouée.",
+        });
       });
   }
   componentDidMount() {
