@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, Button } from "react-native";
+import { Text, View } from "react-native";
 import { UserContext } from "../context/userContext";
 import Style from "../components/style";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -24,7 +24,7 @@ class LogOutScreen extends Component {
             this.logOut();
           }}
         >
-          Se déconnecter
+          <Text style={Style.buttonText}>Se déconnecter</Text>
         </TouchableOpacity>
       </View>
     );

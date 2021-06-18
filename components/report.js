@@ -25,10 +25,12 @@ class Report extends Component {
 
   getMissingChecks() {
     this.provider.getMissingChecks(this.context.base).then((result) => {
-      console.log("Missing checks : ", result);
       this.setState({
         pharmaChecks: result.pharma,
         novaChecks: result.nova,
+      });
+      this.setState({
+        test: 0,
       });
     });
   }
