@@ -23,8 +23,6 @@ class Login extends Component {
     };
   }
   login(initials, password) {
-    console.log("Login...");
-    console.log(this.state.baseid);
     this.user
       .logInApi(initials, password, this.state.baseid)
       .then((value) => {

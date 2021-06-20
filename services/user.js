@@ -4,9 +4,7 @@ const url = "http://127.0.0.1:8000/api/";
 
 class User {
   async saveToken(token) {
-    console.log("Entrée dans fonction savetoken");
     try {
-      console.log("Sa save le token");
       await AsyncStorage.setItem("token", token["token"]);
     } catch (e) {
       // saving error

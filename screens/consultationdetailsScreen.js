@@ -19,7 +19,6 @@ class ConsultationDetailsScreen extends Component {
       .getMyActionsInShift(this.props.route.params.report.id)
       .then((value) => {
         this.setState({ actionsInShift: value });
-        console.log(this.state.actionsInShift);
       });
   }
   render() {
