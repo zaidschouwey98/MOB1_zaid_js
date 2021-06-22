@@ -4,6 +4,7 @@ import Login from "../components/login";
 import { Card } from "react-native-elements";
 import styles from "./style";
 import Provider from "../services/data";
+import Toast from "react-native-toast-message";
 class Schedule extends Component {
   state = { reason: undefined };
   constructor(props) {
@@ -23,7 +24,22 @@ class Schedule extends Component {
   confirmWorkTime(confirmation) {
     this.provider
       .postWorkPlans(this.props.item.id, confirmation, this.state.reason)
-      .then(() => this.props.getUnconfirmedWorkPlans());
+      .then((res) => {
+        this.props.getUnconfirmedWorkPlans();
+        Toast.show(
+          res.status == 200
+            ? {
+                type: "success",
+                text1: "Succès:",
+                text2: "Les informations ont été sauvegardées.",
+              }
+            : {
+                type: "error",
+                text1: "Erreur:",
+                text2: "Vérifiez les champs.",
+              }
+        );
+      });
   }
   render() {
     return (
