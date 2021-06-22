@@ -9,9 +9,28 @@ import {
   SolutionOutlined,
 } from "@ant-design/icons";
 import ScheduleStackNavigator from "./schedulestacknavigator";
+import { UserContext } from "../context/userContext";
+import Provider from "../services/data";
 
 const Tab = createBottomTabNavigator();
 class BottomTabNavigator extends Component {
+  static contextType = UserContext;
+  state = {
+    numberUnconfirmed: undefined,
+  };
+  constructor(props) {
+    super(props);
+    this.provider = new Provider();
+  }
+
+  getUnconfirmedWorkPlans() {
+    this.provider.getUnconfirmedWorkPlans().then((value) => {
+      this.setState({ numberUnconfirmed: value.length });
+    });
+  }
+  componentDidMount() {
+    this.getUnconfirmedWorkPlans();
+  }
   render() {
     return (
       <Tab.Navigator initialRouteName="Reports">
@@ -33,15 +52,19 @@ class BottomTabNavigator extends Component {
             ),
           }}
         />
-        <Tab.Screen
-          name="Horaire"
-          component={ScheduleStackNavigator}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <SolutionOutlined name="home" color={color} size={size} />
-            ),
-          }}
-        />
+        {this.state.numberUnconfirmed > 0 ? (
+          <Tab.Screen
+            name="Horaire"
+            component={ScheduleStackNavigator}
+            options={{
+              tabBarIcon: ({ color, size }) => (
+                <SolutionOutlined name="home" color={color} size={size} />
+              ),
+              tabBarBadge: this.state.numberUnconfirmed,
+            }}
+          />
+        ) : null}
+
         <Tab.Screen
           name="Déconnection"
           component={LogOutScreen}
