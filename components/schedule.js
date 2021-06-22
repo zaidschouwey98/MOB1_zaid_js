@@ -5,6 +5,7 @@ import { Card } from "react-native-elements";
 import styles from "./style";
 import Provider from "../services/data";
 class Schedule extends Component {
+  state = { reason: undefined };
   constructor(props) {
     super(props);
     this.provider = new Provider();
@@ -19,7 +20,11 @@ class Schedule extends Component {
       return "Inconnu";
     }
   }
-  confirmWorkTime() {}
+  confirmWorkTime(confirmation) {
+    this.provider
+      .postWorkPlans(this.props.item.id, confirmation, this.state.reason)
+      .then(() => this.props.getUnconfirmedWorkPlans());
+  }
   render() {
     return (
       <Card>
@@ -41,7 +46,7 @@ class Schedule extends Component {
         <View style={{ flexDirection: "row", flex: 1 }}>
           <TouchableOpacity
             onPress={() => {
-              // this.setState({ sort: "nova" });
+              this.confirmWorkTime(1);
             }}
             style={styles.smallButton}
           >

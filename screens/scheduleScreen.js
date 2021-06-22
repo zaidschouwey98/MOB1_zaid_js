@@ -13,6 +13,7 @@ class ScheduleScreen extends Component {
   constructor(props) {
     super(props);
     this.provider = new Provider();
+    this.getUnconfirmedWorkPlans = this.getUnconfirmedWorkPlans.bind(this);
   }
   getUnconfirmedWorkPlans() {
     this.provider.getUnconfirmedWorkPlans().then((workplans) => {
@@ -42,7 +43,10 @@ class ScheduleScreen extends Component {
 
         {this.state.unconfirmedWorkPlans
           ? this.state.unconfirmedWorkPlans.map((item) => (
-              <Schedule item={item}></Schedule>
+              <Schedule
+                getUnconfirmedWorkPlans={this.getUnconfirmedWorkPlans}
+                item={item}
+              ></Schedule>
             ))
           : null}
       </ScrollView>
