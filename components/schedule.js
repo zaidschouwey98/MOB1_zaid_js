@@ -1,10 +1,13 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import Login from "../components/login";
 import { Card } from "react-native-elements";
+import styles from "./style";
+import Provider from "../services/data";
 class Schedule extends Component {
   constructor(props) {
     super(props);
+    this.provider = new Provider();
   }
   getConfirmationType(confirmation) {
     console.log(confirmation);
@@ -16,6 +19,7 @@ class Schedule extends Component {
       return "Inconnu";
     }
   }
+  confirmWorkTime() {}
   render() {
     return (
       <Card>
@@ -27,13 +31,31 @@ class Schedule extends Component {
         <Text>
           Status : {this.getConfirmationType(this.props.item.confirmation)}
           {this.props.item.confirmation == 0 ? (
-            <Text>{this.props.item.reason}</Text>
+            <Text> Raison : {this.props.item.reason}</Text>
           ) : (
             ""
           )}
         </Text>
+
         <Card.Divider />
-        <Text></Text>
+        <View style={{ flexDirection: "row", flex: 1 }}>
+          <TouchableOpacity
+            onPress={() => {
+              // this.setState({ sort: "nova" });
+            }}
+            style={styles.smallButton}
+          >
+            <Text style={styles.smallButtonText}>Confirmer</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              // this.setState({ sort: "nova" });
+            }}
+            style={styles.smallButton}
+          >
+            <Text style={styles.smallButtonText}>Refusé</Text>
+          </TouchableOpacity>
+        </View>
       </Card>
     );
   }
