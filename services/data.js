@@ -68,5 +68,13 @@ class Provider {
       }),
     });
   }
+  async getUnconfirmedWorkPlans() {
+    return fetch(url + "unconfirmedworkplans/", {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + (await AsyncStorage.getItem("token")),
+      },
+    }).then((response) => response.json());
+  }
 }
 export default Provider;
