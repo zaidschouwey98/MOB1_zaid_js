@@ -79,7 +79,10 @@ class Schedule extends Component {
             onPress={() => {
               this.props.nav.navigate({
                 name: "RefuseSchedule",
-                params: { schedule: this.props.item },
+                params: {
+                  schedule: this.props.item,
+                  getUnconfirmedWorkPlans: this.props.getUnconfirmedWorkPlans,
+                },
               });
             }}
             style={styles.smallButton}

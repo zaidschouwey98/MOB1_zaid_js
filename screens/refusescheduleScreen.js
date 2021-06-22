@@ -16,6 +16,7 @@ class RefuseScheduleScreen extends Component {
     this.provider
       .postWorkPlans(this.props.route.params.schedule.id, 0, this.state.reason)
       .then(() => {
+        this.props.route.params.getUnconfirmedWorkPlans();
         this.props.navigation.navigate({
           name: "Schedule",
         });

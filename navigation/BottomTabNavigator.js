@@ -60,7 +60,10 @@ class BottomTabNavigator extends Component {
               tabBarIcon: ({ color, size }) => (
                 <SolutionOutlined name="home" color={color} size={size} />
               ),
-              tabBarBadge: this.state.numberUnconfirmed,
+              tabBarBadge:
+                this.state.numberUnconfirmed >= 10
+                  ? "*"
+                  : this.state.numberUnconfirmed,
             }}
           />
         ) : null}
