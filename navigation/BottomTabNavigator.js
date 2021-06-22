@@ -8,6 +8,7 @@ import {
   HomeOutlined,
   SolutionOutlined,
 } from "@ant-design/icons";
+import ScheduleStackNavigator from "./schedulestacknavigator";
 
 const Tab = createBottomTabNavigator();
 class BottomTabNavigator extends Component {
@@ -26,6 +27,15 @@ class BottomTabNavigator extends Component {
         <Tab.Screen
           name="Raporter"
           component={ReportStackNavigator}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <SolutionOutlined name="home" color={color} size={size} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Horaire"
+          component={ScheduleStackNavigator}
           options={{
             tabBarIcon: ({ color, size }) => (
               <SolutionOutlined name="home" color={color} size={size} />
