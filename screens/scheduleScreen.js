@@ -22,6 +22,18 @@ class ScheduleScreen extends Component {
   componentDidMount() {
     this.getUnconfirmedWorkPlans();
   }
+
+  getConfirmationType(confirmation) {
+    console.log(confirmation);
+    if (confirmation == null) {
+      return "Refusé";
+    } else if (confirmation == 0) {
+      return "Non-quittancé";
+    } else {
+      return "Inconnu";
+    }
+  }
+
   render() {
     return (
       <ScrollView>
@@ -42,9 +54,14 @@ class ScheduleScreen extends Component {
           ? this.state.unconfirmedWorkPlans.map((item) => (
               <Card>
                 <Card.Title>
-                  {item.date} = {item.worktime.type}
+                  Le {item.date}, Horaire prévu : {item.worktime.type}
                 </Card.Title>
                 <Card.Divider />
+                <Text>
+                  Status : {this.getConfirmationType(item.confirmation)}
+                </Text>
+                <Card.Divider />
+                <Text></Text>
               </Card>
             ))
           : null}
