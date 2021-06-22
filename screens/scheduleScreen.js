@@ -46,6 +46,7 @@ class ScheduleScreen extends Component {
               <Schedule
                 getUnconfirmedWorkPlans={this.getUnconfirmedWorkPlans}
                 item={item}
+                nav={this.props.navigation}
               ></Schedule>
             ))
           : null}

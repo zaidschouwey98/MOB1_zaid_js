@@ -66,26 +66,25 @@ class Schedule extends Component {
         </TouchableOpacity>
         <Card.Divider />
         <Text>
-          <Text>Raison si refutage de l'horaire:</Text>
+          {this.props.item.confirmation == 0 ? (
+            <Text>Raison: {this.props.item.reason}</Text>
+          ) : (
+            ""
+          )}
         </Text>
 
         <Card.Divider />
         <View style={{ flexDirection: "row", flex: 1 }}>
-          <TextInput
-            style={styles.numberInput}
-            keyboardType="numeric"
-            onChangeText={(reason) => {
-              this.setState({ reason: reason });
-            }}
-            defaultValue={this.props.item.reason}
-          />
           <TouchableOpacity
             onPress={() => {
-              this.confirmWorkTime(0);
+              this.props.nav.navigate({
+                name: "RefuseSchedule",
+                params: { schedule: this.props.item },
+              });
             }}
             style={styles.smallButton}
           >
-            <Text style={styles.smallButtonText}>Refuser</Text>
+            <Text style={styles.smallButtonText}>A discuté</Text>
           </TouchableOpacity>
         </View>
       </Card>
