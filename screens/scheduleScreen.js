@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
-import { Card } from "react-native-elements";
+
 import Provider from "../services/data";
 import { ScrollView } from "react-native";
 import styles from "../components/style";
+import Schedule from "../components/schedule";
 
 class ScheduleScreen extends Component {
   state = {
@@ -21,17 +22,6 @@ class ScheduleScreen extends Component {
   }
   componentDidMount() {
     this.getUnconfirmedWorkPlans();
-  }
-
-  getConfirmationType(confirmation) {
-    console.log(confirmation);
-    if (confirmation == null) {
-      return "Refusé";
-    } else if (confirmation == 0) {
-      return "Non-quittancé";
-    } else {
-      return "Inconnu";
-    }
   }
 
   render() {
@@ -52,17 +42,7 @@ class ScheduleScreen extends Component {
 
         {this.state.unconfirmedWorkPlans
           ? this.state.unconfirmedWorkPlans.map((item) => (
-              <Card>
-                <Card.Title>
-                  Le {item.date}, Horaire prévu : {item.worktime.type}
-                </Card.Title>
-                <Card.Divider />
-                <Text>
-                  Status : {this.getConfirmationType(item.confirmation)}
-                </Text>
-                <Card.Divider />
-                <Text></Text>
-              </Card>
+              <Schedule item={item}></Schedule>
             ))
           : null}
       </ScrollView>
